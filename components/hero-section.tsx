@@ -1,0 +1,254 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, Github } from "lucide-react"
+import Link from "next/link"
+
+export function HeroSection() {
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [availability, setAvailability] = useState(100)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight
+      const scrolled = window.scrollY
+      const progress = Math.min(scrolled / heroHeight, 1)
+      setScrollProgress(progress)
+
+      // Animate availability from 100% to 90% based on scroll
+      const newAvailability = 100 - progress * 10
+      setAvailability(Math.max(90, newAvailability))
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const getAvailabilityColor = () => {
+    if (availability >= 99.9) return "text-accent"
+    if (availability >= 99) return "text-warning"
+    return "text-destructive"
+  }
+
+  const objective = 99.9
+  const errorBudgetConsumed = ((objective - availability) / (100 - objective)) * 100
+  const errorBudgetRemaining = Math.max(0, 100 - errorBudgetConsumed)
+
+  const getErrorBudgetColor = () => {
+    if (errorBudgetRemaining >= 80) return "text-accent"
+    if (errorBudgetRemaining >= 50) return "text-warning"
+    return "text-destructive"
+  }
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance leading-tight">
+            Making SLOs with <span className="text-primary">Prometheus</span>
+            <br />
+            manageable and accessible
+          </h1>
+
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 text-balance max-w-3xl mx-auto">
+            Monitor service reliability with Service Level Objectives. Track availability, error budgets, and burn rates
+            for your Kubernetes applications.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
+            <span className="text-sm text-muted-foreground">Supports out of the box:</span>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <img
+                src="/prometheus-logo.jpg"
+                alt="Prometheus"
+                className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              />
+              <img
+                src="/thanos-logo.jpg"
+                alt="Thanos"
+                className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              />
+              <img
+                src="/mimir-logo.jpg"
+                alt="Mimir"
+                className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+            {/* Objective Card */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
+              <div className="relative bg-card border border-border rounded-2xl p-8 backdrop-blur-sm">
+                <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                  SLO Objective
+                </div>
+                <div className="text-5xl md:text-6xl font-bold text-primary mb-2 break-words">99.9%</div>
+                <div className="text-sm text-muted-foreground">Target Uptime</div>
+              </div>
+            </div>
+
+            {/* Availability Card */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
+              <div className="relative bg-card border border-border rounded-2xl p-8 backdrop-blur-sm">
+                <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                  Current Availability
+                </div>
+                <div
+                  className={`text-6xl md:text-7xl font-bold mb-2 transition-colors duration-300 ${getAvailabilityColor()}`}
+                >
+                  {availability.toFixed(2)}%
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {availability >= 99.9 ? "Excellent" : availability >= 99 ? "Good" : "At Risk"}
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
+              <div className="relative bg-card border border-border rounded-2xl p-8 backdrop-blur-sm">
+                <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                  Error Budget
+                </div>
+                <div
+                  className={`text-6xl md:text-7xl font-bold mb-2 transition-colors duration-300 ${getErrorBudgetColor()}`}
+                >
+                  {errorBudgetRemaining.toFixed(1)}%
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {errorBudgetRemaining >= 80 ? "Healthy" : errorBudgetRemaining >= 50 ? "Moderate" : "Critical"}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Error Budget Indicator */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span className="text-muted-foreground">Error Budget</span>
+              <span className="font-mono font-semibold">{((100 - availability) * 10).toFixed(1)}% consumed</span>
+            </div>
+            <div className="h-3 bg-secondary rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-accent via-warning to-destructive transition-all duration-300"
+                style={{ width: `${(100 - availability) * 10}%` }}
+              />
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" className="text-base px-8" asChild>
+              <Link href="https://demo.pyrra.dev">
+                Try Live Demo
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="text-base px-8 bg-transparent" asChild>
+              <Link href="https://github.com/pyrra-dev/pyrra">
+                <Github className="mr-2 w-4 h-4" />
+                View on GitHub
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-16">
+            <p className="text-sm text-muted-foreground mb-6">Trusted by teams at</p>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              <a
+                href="https://grafana.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit Grafana Labs"
+              >
+                <img
+                  src="/grafana-labs-logo.jpg"
+                  alt="Grafana Labs logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              <a
+                href="https://gitlab.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit GitLab"
+              >
+                <img
+                  src="/gitlab-logo.png"
+                  alt="GitLab logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              <a
+                href="https://shopify.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit Shopify"
+              >
+                <img
+                  src="/shopify-logo.png"
+                  alt="Shopify logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              <a
+                href="https://spotify.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit Spotify"
+              >
+                <img
+                  src="/spotify-logo.png"
+                  alt="Spotify logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              <a
+                href="https://cloudflare.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit Cloudflare"
+              >
+                <img
+                  src="/cloudflare-logo.jpg"
+                  alt="Cloudflare logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              <a
+                href="https://digitalocean.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit DigitalOcean"
+              >
+                <img
+                  src="/digitalocean-logo.png"
+                  alt="DigitalOcean logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
