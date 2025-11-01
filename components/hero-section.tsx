@@ -42,7 +42,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-40 pb-32 md:pb-40">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
@@ -68,18 +68,21 @@ export function HeroSection() {
             <span className="text-sm text-muted-foreground">Supports out of the box:</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
               <img
-                src="/prometheus-logo.jpg"
+                src="/prometheus-logo.svg"
                 alt="Prometheus"
+                title="Prometheus"
                 className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               />
               <img
-                src="/thanos-logo.jpg"
+                src="/thanos-logo.svg"
                 alt="Thanos"
+                title="Thanos"
                 className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               />
               <img
-                src="/mimir-logo.jpg"
+                src="/mimir-logo.svg"
                 alt="Mimir"
+                title="Mimir"
                 className="h-6 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               />
             </div>
@@ -93,7 +96,7 @@ export function HeroSection() {
                 <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   SLO Objective
                 </div>
-                <div className="text-5xl md:text-6xl font-bold text-primary mb-2 break-words">99.9%</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 break-words">99.9%</div>
                 <div className="text-sm text-muted-foreground">Target Uptime</div>
               </div>
             </div>
@@ -106,7 +109,7 @@ export function HeroSection() {
                   Current Availability
                 </div>
                 <div
-                  className={`text-6xl md:text-7xl font-bold mb-2 transition-colors duration-300 ${getAvailabilityColor()}`}
+                  className={`text-4xl md:text-5xl font-bold mb-2 transition-colors duration-300 break-words ${getAvailabilityColor()}`}
                 >
                   {availability.toFixed(2)}%
                 </div>
@@ -123,7 +126,7 @@ export function HeroSection() {
                   Error Budget
                 </div>
                 <div
-                  className={`text-6xl md:text-7xl font-bold mb-2 transition-colors duration-300 ${getErrorBudgetColor()}`}
+                  className={`text-4xl md:text-5xl font-bold mb-2 transition-colors duration-300 break-words ${getErrorBudgetColor()}`}
                 >
                   {errorBudgetRemaining.toFixed(1)}%
                 </div>
@@ -131,20 +134,6 @@ export function HeroSection() {
                   {errorBudgetRemaining >= 80 ? "Healthy" : errorBudgetRemaining >= 50 ? "Moderate" : "Critical"}
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Error Budget Indicator */}
-          <div className="max-w-2xl mx-auto mb-12">
-            <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-muted-foreground">Error Budget</span>
-              <span className="font-mono font-semibold">{((100 - availability) * 10).toFixed(1)}% consumed</span>
-            </div>
-            <div className="h-3 bg-secondary rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-accent via-warning to-destructive transition-all duration-300"
-                style={{ width: `${(100 - availability) * 10}%` }}
-              />
             </div>
           </div>
 
@@ -165,7 +154,7 @@ export function HeroSection() {
           </div>
 
           <div className="mt-16">
-            <p className="text-sm text-muted-foreground mb-6">Trusted by teams at</p>
+            <p className="text-sm text-muted-foreground mb-6">Companies alerting on the SLOs in production using Pyrra</p>
             <div className="flex flex-wrap items-center justify-center gap-8">
               <a
                 href="https://grafana.com"
