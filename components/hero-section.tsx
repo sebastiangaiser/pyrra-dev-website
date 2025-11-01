@@ -157,80 +157,15 @@ export function HeroSection() {
             <p className="text-sm text-muted-foreground mb-6">Companies alerting on the SLOs in production using Pyrra</p>
             <div className="flex flex-wrap items-center justify-center gap-8">
               <a
-                href="https://grafana.com"
+                href="https://www.polarsignals.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit Grafana Labs"
+                aria-label="Visit Polar Signals"
               >
                 <img
-                  src="/grafana-labs-logo.jpg"
-                  alt="Grafana Labs logo"
-                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                />
-              </a>
-              <a
-                href="https://gitlab.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit GitLab"
-              >
-                <img
-                  src="/gitlab-logo.png"
-                  alt="GitLab logo"
-                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                />
-              </a>
-              <a
-                href="https://shopify.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit Shopify"
-              >
-                <img
-                  src="/shopify-logo.png"
-                  alt="Shopify logo"
-                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                />
-              </a>
-              <a
-                href="https://spotify.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit Spotify"
-              >
-                <img
-                  src="/spotify-logo.png"
-                  alt="Spotify logo"
-                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                />
-              </a>
-              <a
-                href="https://cloudflare.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit Cloudflare"
-              >
-                <img
-                  src="/cloudflare-logo.jpg"
-                  alt="Cloudflare logo"
-                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                />
-              </a>
-              <a
-                href="https://digitalocean.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group transition-all duration-300 hover:scale-110"
-                aria-label="Visit DigitalOcean"
-              >
-                <img
-                  src="/digitalocean-logo.png"
-                  alt="DigitalOcean logo"
+                  src="/polarsignals.svg"
+                  alt="Polar Signals logo"
                   className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
                 />
               </a>

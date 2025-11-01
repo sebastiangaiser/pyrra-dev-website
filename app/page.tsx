@@ -1,6 +1,5 @@
 import { HeroSection } from "@/components/hero-section"
 import { FeaturesSection } from "@/components/features-section"
-import { TrustedBySection } from "@/components/trusted-by-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
 import { CTASection } from "@/components/cta-section"
 import { Navigation } from "@/components/navigation"
@@ -12,7 +11,6 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <FeaturesSection />
-      <TrustedBySection />
       <HowItWorksSection />
       <CTASection />
       <Footer />
