@@ -16,9 +16,9 @@ export function HeroSection() {
       const progress = Math.min(scrolled / heroHeight, 1)
       setScrollProgress(progress)
 
-      // Animate availability from 100% to 90% based on scroll
-      const newAvailability = 100 - progress * 10
-      setAvailability(Math.max(90, newAvailability))
+      // Animate availability from 100% to 99% based on scroll
+      const newAvailability = 100 - progress * 1
+      setAvailability(Math.max(99, newAvailability))
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -26,14 +26,19 @@ export function HeroSection() {
   }, [])
 
   const getAvailabilityColor = () => {
-    if (availability >= 99.9) return "text-accent"
+    if (availability >= 99.5) return "text-accent"
     if (availability >= 99) return "text-warning"
     return "text-destructive"
   }
 
-  const objective = 99.9
-  const errorBudgetConsumed = ((objective - availability) / (100 - objective)) * 100
-  const errorBudgetRemaining = Math.max(0, 100 - errorBudgetConsumed)
+  // Calculate error budget using Pyrra's algorithm
+  // Based on: https://github.com/pyrra-dev/pyrra/blob/main/ui/src/components/tiles/ErrorBudgetTile.tsx#L36-L38
+  const objectiveTarget = 0.995 // 99.5% as decimal
+  const budget = 1 - objectiveTarget // 0.005 = 0.5% error budget
+  const availabilityDecimal = availability / 100 // Convert percentage to decimal
+  const unavailability = 1 - availabilityDecimal // Actual unavailability
+  const availableBudget = (budget - unavailability) / budget // Percentage of error budget remaining
+  const errorBudgetRemaining = availableBudget * 100 // Convert to percentage
 
   const getErrorBudgetColor = () => {
     if (errorBudgetRemaining >= 80) return "text-accent"
@@ -96,8 +101,8 @@ export function HeroSection() {
                 <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   SLO Objective
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 break-words">99.9%</div>
-                <div className="text-sm text-muted-foreground">Target Uptime</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 break-words">99.5%</div>
+                <div className="text-sm text-muted-foreground">Target Availability</div>
               </div>
             </div>
 
@@ -114,7 +119,7 @@ export function HeroSection() {
                   {availability.toFixed(2)}%
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  {availability >= 99.9 ? "Excellent" : availability >= 99 ? "Good" : "At Risk"}
+                  {availability >= 99.5 ? "Excellent" : availability >= 99 ? "Good" : "At Risk"}
                 </div>
               </div>
             </div>
