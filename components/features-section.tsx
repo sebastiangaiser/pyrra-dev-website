@@ -3,36 +3,36 @@ import { Activity, AlertTriangle, BarChart3, Clock, Filter, Gauge } from "lucide
 const features = [
   {
     icon: Gauge,
-    title: "Multi Burn Rate Alerts",
+    title: "End alert fatigue",
     description:
-      "Automatically generates 4 severity levels of alerts based on error budget burn rates to catch issues early.",
+      "Pyrra generates multi-window, multi-burn-rate alerts at 4 severity levels. You get paged for real incidents, not noise.",
   },
   {
     icon: BarChart3,
-    title: "Comprehensive Dashboards",
-    description: "Visualize SLOs, error budgets, and burn rates with beautiful Grafana dashboards out of the box.",
+    title: "Dashboards without the YAML maze",
+    description: "Get Grafana dashboards for every SLO out of the box. No hand-crafted JSON, no copy-paste errors.",
   },
   {
     icon: Activity,
-    title: "Real-time Monitoring",
+    title: "See error budgets in real time",
     description:
-      "Track availability, error budget consumption, and service health metrics in real-time with Prometheus.",
+      "Know exactly how much budget remains and how fast you're burning it, before an incident eats it all.",
   },
   {
     icon: Filter,
-    title: "Advanced Filtering",
+    title: "Find the SLOs that matter",
     description:
-      "Search and filter SLOs by name, labels, and error budget status. Click labels to drill down instantly.",
+      "Filter by name, labels, or error budget status. Click any label to drill down instantly across services.",
   },
   {
     icon: Clock,
-    title: "Time Range Analysis",
-    description: "Analyze SLO performance over custom time ranges with absolute and relative chart scales.",
+    title: "Spot trends before they bite",
+    description: "Analyze SLO performance over custom time ranges to catch slow degradation before users notice.",
   },
   {
     icon: AlertTriangle,
-    title: "Error Budget Tracking",
-    description: "See remaining error budget at a glance. Sort by worst performers to prioritize reliability work.",
+    title: "Prioritize what to fix first",
+    description: "Sort SLOs by remaining error budget. The worst performers surface to the top, so you focus where it counts.",
   },
 ]
 
@@ -41,9 +41,9 @@ export function FeaturesSection() {
     <section id="features" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Everything you need for SLO monitoring</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">What Pyrra handles for you</h2>
           <p className="text-xl text-muted-foreground text-balance">
-            Built for DevOps and SRE teams who want to make reliability measurable and actionable
+            You define the objective. Pyrra generates the recording rules, alerts, and dashboards automatically.
           </p>
         </div>
 

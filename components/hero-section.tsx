@@ -59,14 +59,11 @@ export function HeroSection() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance leading-tight">
-            Making SLOs with <span className="text-primary">Prometheus</span>
-            <br />
-            manageable and accessible
+            Stop hand-rolling SLOs for <span className="text-primary">Prometheus</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 text-balance max-w-3xl mx-auto">
-            Monitor service reliability with Service Level Objectives. Track availability, error budgets, and burn rates
-            for your Kubernetes applications.
+            Define your objectives in YAML. Pyrra generates the recording rules, multi-window burn rate alerts, and dashboards. You ship reliability, not PromQL.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
@@ -145,21 +142,20 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="text-base px-8" asChild>
-              <Link href="https://demo.pyrra.dev">
-                Try Live Demo
+              <Link href="https://github.com/pyrra-dev/pyrra#readme">
+                Get Started
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-base px-8 bg-transparent" asChild>
-              <Link href="https://github.com/pyrra-dev/pyrra">
-                <Github className="mr-2 w-4 h-4" />
-                View on GitHub
+              <Link href="https://demo.pyrra.dev">
+                Try Live Demo
               </Link>
             </Button>
           </div>
 
           <div className="mt-16">
-            <p className="text-sm text-muted-foreground mb-6">Companies alerting on the SLOs in production using Pyrra</p>
+            <p className="text-sm text-muted-foreground mb-6">Used in production by</p>
             <div className="flex flex-wrap items-center justify-center gap-8">
               <a
                 href="https://www.polarsignals.com"

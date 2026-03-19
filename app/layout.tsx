@@ -16,9 +16,8 @@ const _geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Pyrra - Making SLOs with Prometheus manageable, accessible, and easy to use",
-  description: "SLO monitoring for Kubernetes. Track availability, error budgets, and burn rates with Prometheus.",
-  generator: "v0.app",
+  title: "Pyrra - SLO monitoring for Prometheus without the PromQL pain",
+  description: "Define SLOs in YAML, get recording rules, multi-window burn rate alerts, and Grafana dashboards automatically. Open source, works with Prometheus, Thanos, and Mimir.",
 }
 
 export default function RootLayout({

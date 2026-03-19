@@ -40,7 +40,7 @@ export function Navigation() {
             </Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href="https://demo.pyrra.dev">Try Demo</Link>
+            <Link href="https://github.com/pyrra-dev/pyrra#readme">Get Started</Link>
           </Button>
         </div>
       </div>

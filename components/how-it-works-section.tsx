@@ -42,8 +42,8 @@ http_requests:burnrate2d`,
 - Severity: critical
   Window: 1h, 5m
   Burn: 14.4x
-  
-- Severity: warning  
+
+- Severity: warning
   Window: 6h, 30m
   Burn: 6x`,
   },
@@ -54,9 +54,9 @@ export function HowItWorksSection() {
     <section id="how-it-works" className="py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">How Pyrra Works</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">From YAML to production in three steps</h2>
           <p className="text-xl text-muted-foreground text-balance">
-            Three simple steps to production-ready SLO monitoring
+            No PromQL required. Define what matters, and Pyrra wires the rest.
           </p>
         </div>
 

@@ -14,23 +14,23 @@ export function CTASection() {
 
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Ready to make reliability measurable?
+                Deploy Pyrra in minutes, not sprints
               </h2>
               <p className="text-xl text-muted-foreground mb-10 text-balance max-w-2xl mx-auto">
-                Join teams using Pyrra to monitor SLOs and maintain reliable services with Prometheus and Kubernetes.
+                Open source under Apache 2.0. Works with Prometheus, Thanos, and Mimir. Run it on bare metal, Docker, or Kubernetes.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                 <Button size="lg" className="text-base px-8" asChild>
-                  <Link href="https://demo.pyrra.dev">
-                    <Play className="mr-2 w-4 h-4" />
-                    Try Live Demo
+                  <Link href="https://github.com/pyrra-dev/pyrra#readme">
+                    <BookOpen className="mr-2 w-4 h-4" />
+                    Read the Docs
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="text-base px-8 bg-transparent" asChild>
-                  <Link href="https://github.com/pyrra-dev/pyrra">
-                    <Github className="mr-2 w-4 h-4" />
-                    Get Started
+                  <Link href="https://demo.pyrra.dev">
+                    <Play className="mr-2 w-4 h-4" />
+                    Try Live Demo
                   </Link>
                 </Button>
               </div>
