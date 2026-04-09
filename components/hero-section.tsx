@@ -170,6 +170,19 @@ export function HeroSection() {
                   className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
                 />
               </a>
+              <a
+                href="https://www.hetzner.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group transition-all duration-300 hover:scale-110"
+                aria-label="Visit Hetzner"
+              >
+                <img
+                  src="/hetzner-logo-slogan_white_space-red.svg"
+                  alt="Hetzner logo"
+                  className="h-8 w-auto object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
             </div>
           </div>
         </div>
